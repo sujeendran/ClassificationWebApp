@@ -16,7 +16,7 @@ Data obtained from the [UCI Machine learning Repository](https://archive.ics.uci
 
 st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
-[Example CSV input file](file://breast_cancer_sample.csv)
+[Example CSV input file](https://raw.githubusercontent.com/sujeendran/ClassificationWebApp/master/BreastCancerRecurrence/breast_cancer_sample.csv)
 """)
 
 # Collects user input features into dataframe
