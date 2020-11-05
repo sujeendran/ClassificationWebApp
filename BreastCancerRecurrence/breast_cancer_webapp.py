@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
+import os
+
+script_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(script_path,'breast_cancer_cleaned.csv')
+model_path = os.path.join(script_path,'bcancer_clf.pkl')
 
 st.write("""
 # Breast Cancer Recurrence Prediction App
@@ -49,7 +54,7 @@ else:
 
 # Combines user input features with entire cancer dataset
 # This will be useful for the encoding phase
-dataset_raw = pd.read_csv('breast_cancer_cleaned.csv')
+dataset_raw = pd.read_csv(data_path)
 dataset = dataset_raw.drop(columns=['class'])
 df = pd.concat([input_df,dataset],axis=0)
 
@@ -71,7 +76,7 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-load_clf = pickle.load(open('bcancer_clf.pkl', 'rb'))
+load_clf = pickle.load(open(model_path, 'rb'))
 
 # Apply model to make predictions
 prediction = load_clf.predict(df)

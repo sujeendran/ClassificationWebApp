@@ -1,5 +1,11 @@
 import pandas as pd
-penguins = pd.read_csv('breast_cancer_cleaned.csv')
+import os
+
+script_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(script_path,'breast_cancer_cleaned.csv')
+model_path = os.path.join(script_path,'bcancer_clf.pkl')
+
+penguins = pd.read_csv(data_path)
 
 df = penguins.copy()
 target = 'class'
@@ -27,4 +33,4 @@ clf.fit(X, Y)
 
 # Saving the model
 import pickle
-pickle.dump(clf, open('bcancer_clf.pkl', 'wb'))
+pickle.dump(clf, open(model_path, 'wb'))

@@ -3,6 +3,12 @@ import pandas as pd
 import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
+import os
+
+script_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(script_path,'penguins_cleaned.csv')
+model_path = os.path.join(script_path,'penguins_clf.pkl')
+penguins = pd.read_csv(data_path)
 
 st.write("""
 # Penguin Prediction App
@@ -42,7 +48,7 @@ else:
 
 # Combines user input features with entire penguins dataset
 # This will be useful for the encoding phase
-penguins_raw = pd.read_csv('penguins_cleaned.csv')
+penguins_raw = pd.read_csv(data_path)
 penguins = penguins_raw.drop(columns=['species'])
 df = pd.concat([input_df,penguins],axis=0)
 
@@ -65,7 +71,7 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-load_clf = pickle.load(open('penguins_clf.pkl', 'rb'))
+load_clf = pickle.load(open(model_path, 'rb'))
 
 # Apply model to make predictions
 prediction = load_clf.predict(df)
