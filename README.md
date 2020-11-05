@@ -8,6 +8,8 @@ The Breast Cancer Recurrence classifier is a modification of the same classifier
 
 ## Demo
 
+[Live link for Breast Cancer Recurrence classifier](https://share.streamlit.io/sujeendran/classificationwebapp/BreastCancerRecurrence/breast_cancer_webapp.py)
+
 To run a demo install the python modules:
 
 `pip install streamlit pandas numpy scikit-learn`
